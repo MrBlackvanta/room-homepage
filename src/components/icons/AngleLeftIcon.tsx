@@ -11,7 +11,7 @@ export default function AngleLeftIcon(props: SVGProps<SVGSVGElement>) {
       focusable="false"
       {...props}
     >
-      <path d="M13 0L1 12l12 12" />
+      <path d="M13 0L1 12l12 12" vectorEffect="non-scaling-stroke" />
     </svg>
   );
 }

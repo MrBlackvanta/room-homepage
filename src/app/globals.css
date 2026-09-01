@@ -38,6 +38,20 @@
   --text-cta--letter-spacing: 0.83333em;
 }
 
+@utility v-hero-frame {
+  &::before {
+    content: "";
+    grid-area: 1 / 1;
+    aspect-ratio: 375 / 360;
+  }
+
+  @media (width >= 30rem) {
+    &::before {
+      aspect-ratio: 840 / 534;
+    }
+  }
+}
+
 @layer base {
   html {
     overflow-y: scroll;
