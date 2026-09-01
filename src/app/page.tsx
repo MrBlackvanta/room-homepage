@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <>
       <SiteHeader />
-      <main id="main">
+      <main>
         <HeroCarousel
           slides={slides.map((slide, index) => ({
             id: slide.id,

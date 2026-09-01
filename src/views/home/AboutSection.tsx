@@ -15,7 +15,7 @@ export default function AboutSection() {
         height={dark.height}
         loading="lazy"
         decoding="async"
-        className="aspect-[420/266] w-full object-cover lg:aspect-auto lg:h-full"
+        className="aspect-420/266 w-full object-cover lg:aspect-auto lg:h-full"
       />
 
       <div className="relative mx-auto w-full max-w-120 px-8 pt-12.25 pb-10.25 lg:flex lg:max-w-none lg:flex-col lg:justify-center lg:px-12 lg:py-14.75">
@@ -40,7 +40,7 @@ export default function AboutSection() {
         height={light.height}
         loading="lazy"
         decoding="async"
-        className="aspect-[440/266] w-full object-cover lg:aspect-auto lg:h-full"
+        className="aspect-440/266 w-full object-cover lg:aspect-auto lg:h-full"
       />
     </section>
   );

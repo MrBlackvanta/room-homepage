@@ -4,24 +4,19 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { CloseIcon, Logo, MenuIcon } from "@/components/icons";
+import usePageLock from "@/lib/usePageLock";
 
 import NavLinks from "./NavLinks";
 
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
 
+  usePageLock(open);
+
   useEffect(() => {
     if (!open) return;
 
-    const root = document.documentElement;
-    const main = document.getElementById("main");
     const wide = window.matchMedia("(min-width: 64rem)");
-    const gutter = window.innerWidth - root.clientWidth;
-
-    root.style.overflow = "hidden";
-    root.style.paddingRight = `${gutter}px`;
-    main?.setAttribute("inert", "");
-
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") setOpen(false);
     };
@@ -33,9 +28,6 @@ export default function SiteHeader() {
     wide.addEventListener("change", closeWhenWide);
 
     return () => {
-      root.style.overflow = "";
-      root.style.paddingRight = "";
-      main?.removeAttribute("inert");
       document.removeEventListener("keydown", closeOnEscape);
       wide.removeEventListener("change", closeWhenWide);
     };

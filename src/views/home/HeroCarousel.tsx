@@ -5,8 +5,14 @@ import type { KeyboardEvent, ReactNode } from "react";
 
 import HeroControls from "./HeroControls";
 
+type RenderedSlide = {
+  id: string;
+  photo: ReactNode;
+  copy: ReactNode;
+};
+
 type HeroCarouselProps = {
-  slides: { id: string; photo: ReactNode; copy: ReactNode }[];
+  slides: RenderedSlide[];
 };
 
 const fade =

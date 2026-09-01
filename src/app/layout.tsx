@@ -11,8 +11,8 @@ const leagueSpartan = League_Spartan({
   display: "swap",
 });
 
-const name = "room";
-const title = `${name} | Modern furniture for every space`;
+const siteName = "room";
+const title = `${siteName} | Modern furniture for every space`;
 const description =
   "Furniture that brings quality, comfort and style to any property. Browse the collection, work with our specialists, and create a space that reflects you.";
 
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title,
     description,
     url: "/",
-    siteName: name,
+    siteName,
     locale: "en_US",
     type: "website",
     images: [shareImage],
@@ -58,15 +58,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${leagueSpartan.variable} antialiased`}>
-      <body className="font-sans">
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-black focus:px-6 focus:py-3 focus:text-white"
-        >
-          Skip to content
-        </a>
-        {children}
-      </body>
+      <body className="font-sans">{children}</body>
     </html>
   );
 }
