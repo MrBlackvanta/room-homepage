@@ -54,7 +54,6 @@
 
 @layer base {
   html {
-    --v-page-gutter: 0px;
     overflow-y: scroll;
   }
   body {

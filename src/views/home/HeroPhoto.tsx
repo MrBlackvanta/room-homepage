@@ -5,11 +5,32 @@ type HeroPhotoProps = {
   priority: boolean;
 };
 
+const wide = "(width >= 30rem)";
+const narrow = "(width < 30rem)";
+
 export default function HeroPhoto({ slide, priority }: HeroPhotoProps) {
   return (
     <picture className="contents">
+      {priority && (
+        <>
+          <link
+            rel="preload"
+            as="image"
+            href={slide.mobile.src}
+            media={narrow}
+            fetchPriority="high"
+          />
+          <link
+            rel="preload"
+            as="image"
+            href={slide.desktop.src}
+            media={wide}
+            fetchPriority="high"
+          />
+        </>
+      )}
       <source
-        media="(min-width: 30rem)"
+        media={wide}
         srcSet={slide.desktop.src}
         width={slide.desktop.width}
         height={slide.desktop.height}

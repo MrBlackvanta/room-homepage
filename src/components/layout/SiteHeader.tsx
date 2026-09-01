@@ -35,7 +35,7 @@ export default function SiteHeader() {
 
   return (
     <header
-      className={`top-0 right-(--v-page-gutter) left-0 flex h-27.5 items-center gap-14 px-6 lg:h-35.25 lg:px-16 ${
+      className={`inset-x-0 top-0 flex h-27.5 items-center gap-14 px-6 lg:h-35.25 lg:px-16 ${
         open ? "fixed z-60" : "absolute z-30"
       }`}
     >
@@ -84,7 +84,7 @@ export default function SiteHeader() {
         />
         <nav
           aria-label="Main"
-          className={`relative me-(--v-page-gutter) flex h-27.5 items-center bg-white px-6 transition-transform duration-300 ease-out motion-reduce:transition-none ${
+          className={`relative flex h-27.5 items-center bg-white px-6 transition-transform duration-300 ease-out motion-reduce:transition-none ${
             open ? "translate-y-0" : "-translate-y-full"
           }`}
         >

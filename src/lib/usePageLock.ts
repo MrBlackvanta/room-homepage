@@ -4,20 +4,21 @@ export default function usePageLock(locked: boolean) {
   useEffect(() => {
     if (!locked) return;
 
-    const root = document.documentElement;
+    const { body } = document;
     const main = document.querySelector("main");
-    const gutter = window.innerWidth - root.clientWidth;
+    const offset = window.scrollY;
 
-    root.style.setProperty("--v-page-gutter", `${gutter}px`);
-    root.style.overflow = "hidden";
-    root.style.paddingRight = `${gutter}px`;
+    body.style.position = "fixed";
+    body.style.insetInline = "0";
+    body.style.top = `${-offset}px`;
     main?.setAttribute("inert", "");
 
     return () => {
-      root.style.removeProperty("--v-page-gutter");
-      root.style.overflow = "";
-      root.style.paddingRight = "";
+      body.style.position = "";
+      body.style.insetInline = "";
+      body.style.top = "";
       main?.removeAttribute("inert");
+      window.scrollTo({ top: offset, behavior: "instant" });
     };
   }, [locked]);
 }
