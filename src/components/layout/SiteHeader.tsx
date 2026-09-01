@@ -35,7 +35,7 @@ export default function SiteHeader() {
 
   return (
     <header
-      className={`inset-x-0 top-0 flex h-27.5 items-center gap-14 px-6 lg:h-35.25 lg:px-16 ${
+      className={`top-0 right-(--v-page-gutter) left-0 flex h-27.5 items-center gap-14 px-6 lg:h-35.25 lg:px-16 ${
         open ? "fixed z-60" : "absolute z-30"
       }`}
     >
@@ -44,7 +44,7 @@ export default function SiteHeader() {
         onClick={() => setOpen((current) => !current)}
         aria-expanded={open}
         aria-label={open ? "Close menu" : "Open menu"}
-        className={`-ms-3.5 grid size-12 place-items-center lg:hidden ${
+        className={`-ms-3.5 grid size-12 place-items-center transition-colors duration-300 lg:hidden ${
           open ? "text-ink-muted" : "text-white"
         }`}
       >
@@ -69,23 +69,28 @@ export default function SiteHeader() {
         <NavLinks variant="bar" />
       </nav>
 
-      {open && (
-        <div className="fixed inset-0 -z-1 lg:hidden">
-          <button
-            type="button"
-            tabIndex={-1}
-            aria-hidden="true"
-            onClick={() => setOpen(false)}
-            className="absolute inset-0 bg-black/50"
-          />
-          <nav
-            aria-label="Main"
-            className="relative flex h-27.5 items-center bg-white px-6"
-          >
-            <NavLinks variant="menu" />
-          </nav>
-        </div>
-      )}
+      <div
+        inert={!open}
+        className={`fixed inset-0 -z-1 lg:hidden ${open ? "" : "pointer-events-none"}`}
+      >
+        <button
+          type="button"
+          tabIndex={-1}
+          aria-hidden="true"
+          onClick={() => setOpen(false)}
+          className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ease-out ${
+            open ? "opacity-100" : "opacity-0"
+          }`}
+        />
+        <nav
+          aria-label="Main"
+          className={`relative me-(--v-page-gutter) flex h-27.5 items-center bg-white px-6 transition-transform duration-300 ease-out motion-reduce:transition-none ${
+            open ? "translate-y-0" : "-translate-y-full"
+          }`}
+        >
+          <NavLinks variant="menu" />
+        </nav>
+      </div>
     </header>
   );
 }
