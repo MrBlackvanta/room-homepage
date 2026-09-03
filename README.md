@@ -9,7 +9,7 @@ A solution to the [Room homepage challenge on Frontend Mentor](https://www.front
 
 ## Built with
 
-- Next.js (App Router, static export)
+- Next.js
 - React
 - TypeScript
 - Tailwind CSS
